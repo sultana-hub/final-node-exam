@@ -60,13 +60,15 @@ const ProductsDetails = () => {
             }}
           />
           <Typography
-            variant="caption"
+            variant="h6"
             display="block"
             align="center"
             mt={1}
             component={Link}
             to="/"
-            sx={{ textDecoration: "none", color: "primary.main", cursor: "pointer" }}
+            sx={{ textDecoration: "none",
+              color: "#1d0944ff",
+               cursor: "pointer" }}
           >
             Back To Home
           </Typography>
@@ -85,10 +87,10 @@ const ProductsDetails = () => {
               {product.description}
             </Typography>
             <Box sx={{ mt: 3, display: 'flex', gap: 2 }}>
-              <Button variant="contained" 
-              sx={{
-        backgroundColor: "#1d0944ff", // your custom color
-      }}
+              <Button variant="contained"
+                sx={{
+                  backgroundColor: "#1d0944ff", // your custom color
+                }}
               >
                 Add to Cart
               </Button>

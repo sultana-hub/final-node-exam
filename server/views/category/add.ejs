@@ -60,15 +60,15 @@
 
 
                                 <div class="card-body">
-                                    <% if (message) { %>
+                                    <% if (message && message.length> 0) { %>
                                         <div class="alert alert-info">
-                                            <%= message %>
+                                            <%= message[0] %>
                                         </div>
                                         <% } %>
                                             <form action="/category/create" method="post">
                                                 <div class="form-group">
                                                     <label for="courseName">Name</label>
-                                                    <input type="text" class="form-control" name="name">
+                                                    <input type="text" class="form-control" name="name" >
 
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">Add Category</button>

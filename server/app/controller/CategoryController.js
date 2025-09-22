@@ -18,9 +18,11 @@ class CategoryController {
             const { error, value } = categoryValidation.validate(categoryData);
 
             if (error) {
-                return res.status(httpStatusCode.BadRequest).json({
-                    message: error.details[0].message,
-                });
+                // return res.status(httpStatusCode.BadRequest).json({
+                //     message: error.details[0].message,
+                // });
+                req.flash('message', error.details[0].message);
+                return res.redirect('/category/add');
             }
 
             const { name } = value;
@@ -29,15 +31,14 @@ class CategoryController {
             const category = new CategoryModel({ name });
             await category.save();
             req.flash('message', 'Category created successfully!');
+            return res.redirect('/category/add');
             // Redirect with success message
-            return res.redirect('/category/list');
+            // return res.redirect('/category/list');
 
         } catch (error) {
             console.error("Error creating category:", error);
-            return res.status(httpStatusCode.InternalServerError).json({
-                status: false,
-                message: "Server error while creating category",
-            });
+            req.flash('message', "Server error while creating category");
+            return res.redirect('/category/add');
         }
     }
 

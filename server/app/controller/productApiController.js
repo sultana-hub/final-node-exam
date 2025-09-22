@@ -31,15 +31,12 @@ class ProducApiController {
             //     status: true,
             //     data: createdProduct
             // });
-             req.flash('message', 'Product created successfully!');
-            return res.redirect('/product/list');
+            req.flash('message', 'Product created successfully!');
+            return res.redirect('/product/add');
 
         } catch (error) {
-            console.error(error);
-            return res.status(httpStatusCode.InternalServerError).json({
-                status: false,
-                message: error.details?.[0]?.message || error.message || 'Server error'
-            });
+            req.flash('message', error.details[0].message);
+            return res.redirect('/product/add');
         }
     }
 
@@ -202,7 +199,7 @@ class ProducApiController {
             //     message: "Deleted successfully",
             //     data: softDel
             // })
-             return res.redirect('/product/list');
+            return res.redirect('/product/list');
         } catch (error) {
             return res.status(httpStatusCode.InternalServerError).json({
                 status: false,

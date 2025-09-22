@@ -5,7 +5,7 @@ const Home = lazy(() => import('../pages/Home'))
 
 import ProductsDetails from '../pages/ProductsDetails'
 import Header from '../layout/Header'
-
+import Footer from '../layout/Footer'
 import { Box, CircularProgress,Typography  } from '@mui/material';
 const Error = lazy(() => {
   return new Promise(resolve => {
@@ -38,7 +38,7 @@ const Routing = () => {
             <Route path="/error" element={<Error />} />
           </Routes>
         </Suspense>
-        {/* <Footer/> */}
+        <Footer/>
       </Router>
     </div>
   )

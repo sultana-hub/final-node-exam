@@ -28,7 +28,9 @@ const SearchForm = ({ onSearch }) => {
         }}
         sx={{ width: 600 }}
       />
-      <Button type="submit" variant="contained" color="primary" size="small">
+      <Button type="submit" variant="contained" sx={{
+        backgroundColor: "#1d0944ff", // your custom color
+      }} size="small">
         Search
       </Button>
     </Box>

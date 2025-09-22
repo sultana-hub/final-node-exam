@@ -11,7 +11,11 @@ import "./styleNav.css";
 
 const Header = () => {
   return (
-    <AppBar position="static" color="primary" enableColorOnDark>
+    <AppBar position="static" enableColorOnDark
+      sx={{
+        backgroundColor: "#1d0944ff", // your custom color
+      }}
+    >
       <Toolbar sx={{ justifyContent: 'space-between' }}>
         {/* Left Section */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>

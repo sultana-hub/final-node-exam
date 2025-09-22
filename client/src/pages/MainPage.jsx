@@ -78,7 +78,7 @@ const MainPage = () => {
 
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
-         <Typography variant="h4" component="h1" align="center">
+      <Typography variant="h4" component="h1" align="center">
         Welcome To Customer Portal
       </Typography>
       {/* Search Bar */}
@@ -132,7 +132,9 @@ const MainPage = () => {
                   <Box sx={{ p: 2, textAlign: 'center' }}>
                     <Button
                       variant="contained"
-                      color="primary"
+                      sx={{
+                        backgroundColor: "#1d0944ff", // your custom color
+                      }}
                       size="small"
                       onClick={() => handleDetails(item._id)}
                     >

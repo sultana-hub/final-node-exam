@@ -85,7 +85,11 @@ const ProductsDetails = () => {
               {product.description}
             </Typography>
             <Box sx={{ mt: 3, display: 'flex', gap: 2 }}>
-              <Button variant="contained" color="primary">
+              <Button variant="contained" 
+              sx={{
+        backgroundColor: "#1d0944ff", // your custom color
+      }}
+              >
                 Add to Cart
               </Button>
               <Button variant="outlined" color="secondary">

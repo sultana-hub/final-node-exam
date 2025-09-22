@@ -1,158 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Developer Social Admin</title>
 
-  <!-- Bootstrap & Font Awesome -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Company Admin Dashboard</title>
 
-  <style>
-    body {
-      font-family: 'Nunito', sans-serif;
-      background-color: #f8f9fc;
-    }
-    .dashboard-title {
-      font-weight: bold;
-      color: #4e73df;
-    }
-    .card {
-      border: none;
-      border-radius: 1rem;
-    }
-    .sidebar {
-      min-height: 100vh;
-    }
-    .main-content {
-      padding: 2rem;
-    }
-    .navbar {
-      background-color: white !important;
-      border-bottom: 1px solid #dee2e6;
-    }
-    .stat-box {
-      background-color: #ffffff;
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.05);
-      text-align: center;
-    }
-    .stat-box h3 {
-      font-size: 2rem;
-      color: #4e73df;
-    }
-    .stat-box p {
-      margin: 0;
-      font-weight: 600;
-      color: #6c757d;
-    }
-  </style>
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+
 </head>
-<body>
 
-<div class="container-fluid p-0">
-  <div class="row g-0">
+<body id="page-top">
 
-    <!-- Sidebar -->
-    <div class="col-md-3 col-lg-2 bg-dark text-white sidebar p-0">
-      <%- include('layout/sidebar') %>
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <%- include('./layouts/sidebar')%>
+            <!-- End of Sidebar -->
+
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+
+                    <!-- Topbar -->
+                    <%- include('./layouts/navbar')%>
+
+                        <!-- End of Topbar -->
+
+                        <!-- Begin Page Content -->
+                        <div class="container-fluid">
+
+                            <!-- Page Heading -->
+                            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                                <h1 class="h3 mb-0 text-gray-800">Admin Dashboard</h1>
+                            </div>
+                          
+                                    <!-- Content Row -->
+                                    <div class="row">
+
+                                        <!-- Earnings (Monthly) Card Example -->
+                                        <div class="col-xl-3 col-md-6 mb-4">
+                                            <div class="card border-left-primary shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div
+                                                                class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                                No Of Products</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">20
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Earnings (Monthly) Card Example -->
+                                        <div class="col-xl-3 col-md-6 mb-4">
+                                            <div class="card border-left-success shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div
+                                                                class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                                Category</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">10
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Earnings (Monthly) Card Example -->
+                                        <div class="col-xl-3 col-md-6 mb-4">
+                                            <div class="card border-left-info shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div
+                                                                class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                                Sales
+                                                            </div>
+                                                            <div class="row no-gutters align-items-center">
+                                                                <div class="col-auto">
+                                                                    <div
+                                                                        class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                                        90%
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="progress progress-sm mr-2">
+                                                                        <div class="progress-bar bg-info"
+                                                                            role="progressbar" style="width: 50%"
+                                                                            aria-valuenow="50" aria-valuemin="0"
+                                                                            aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Pending Requests Card Example -->
+                                        <div class="col-xl-3 col-md-6 mb-4">
+                                            <div class="card border-left-warning shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div
+                                                                class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                                Customer</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Content Row -->
+
+                                    <div class="row">
+
+                                        <!-- Area Chart -->
+                                        <div class="col-xl-8 col-lg-7">
+                                            <div class="card shadow mb-4">
+                                                <!-- Card Header - Dropdown -->
+                                                <div
+                                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                                    <h6 class="m-0 font-weight-bold text-primary">Earnings</h6>
+                                                    <div class="dropdown no-arrow">
+                                                        <a class="dropdown-toggle" href="#" role="button"
+                                                            id="dropdownMenuLink" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                                            aria-labelledby="dropdownMenuLink">
+                                                            <div class="dropdown-header">Dropdown Header:</div>
+                                                            <a class="dropdown-item" href="#">Action</a>
+                                                            <a class="dropdown-item" href="#">Another action</a>
+                                                            <div class="dropdown-divider"></div>
+                                                            <a class="dropdown-item" href="#">Something else here</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Card Body -->
+                                                <div class="card-body">
+                                                    <div class="chart-area">
+                                                        <canvas id="myAreaChart"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Pie Chart -->
+                                        <div class="col-xl-4 col-lg-5">
+                                            <div class="card shadow mb-4">
+                                                <!-- Card Header - Dropdown -->
+                                                <div
+                                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                                    <div class="dropdown no-arrow">
+                                                        <a class="dropdown-toggle" href="#" role="button"
+                                                            id="dropdownMenuLink" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                                            aria-labelledby="dropdownMenuLink">
+                                                            <div class="dropdown-header">Dropdown Header:</div>
+                                                            <a class="dropdown-item" href="#">Action</a>
+                                                            <a class="dropdown-item" href="#">Another action</a>
+                                                            <div class="dropdown-divider"></div>
+                                                            <a class="dropdown-item" href="#">Something else here</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Card Body -->
+                                                <div class="card-body">
+                                                    <div class="chart-pie pt-4 pb-2">
+                                                        <canvas id="myPieChart"></canvas>
+                                                    </div>
+                                                    <div class="mt-4 text-center small">
+                                                        <span class="mr-2">
+                                                            <i class="fas fa-circle text-primary"></i> Direct
+                                                        </span>
+                                                        <span class="mr-2">
+                                                            <i class="fas fa-circle text-success"></i> Social
+                                                        </span>
+                                                        <span class="mr-2">
+                                                            <i class="fas fa-circle text-info"></i> Referral
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Content Row -->
+                                    <div class="row">
+
+                                        <!-- Content Column -->
+                                        <div class="col-lg-6 mb-4">
+
+                                            <!-- Project Card Example -->
+
+
+
+                                        </div>
+
+                                    </div>
+
+                        </div>
+                        <!-- /.container-fluid -->
+
+                </div>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+
+                <%-include('./layouts/footer') %>
+                    <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
     </div>
+    <!-- End of Page Wrapper -->
 
-    <!-- Main Content -->
-    <div class="col-md-9 col-lg-10 p-0">
-      <!-- Header -->
-      <%- include('layout/header') %>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-      <!-- Page Content -->
-      <div class="main-content">
-        <div class="text-center mb-4">
-          <h4 class="dashboard-title">Task Management Dashboard</h4>
-        </div>
 
-        <% if (message && message.length > 0) { %>
-          <div class="alert alert-success">
-            <%= message[0] %>
-          </div>
-        <% } %>
 
-        <!-- Stat Cards -->
-        <div class="row mb-4">
-          <div class="col-md-4">
-            <div class="stat-box">
-              <h3>4</h3>
-              <p>Total Users</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="stat-box">
-              <h3>4</h3>
-              <p>Profiles Created</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="stat-box">
-              <h3>1</h3>
-              <p>Blocked Users</p>
-            </div>
-          </div>
-        </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Charts -->
-        <div class="row mb-4">
-          <div class="col-md-8">
-            <div class="card shadow p-4">
-              <h5>User Registrations</h5>
-              <canvas id="lineChart"></canvas>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card shadow p-4">
-              <h5>Tech Skills Distribution</h5>
-              <canvas id="skillPieChart"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-      <!-- Footer -->
-      <%- include('layout/footer') %>
-    </div>
-  </div>
-</div>
+    <!-- Custom scripts for all pages-->
+    <script src="/js/sb-admin-2.min.js"></script>
 
-<!-- Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-  const lineCtx = document.getElementById('lineChart').getContext('2d');
-  new Chart(lineCtx, {
-    type: 'line',
-    data: {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-      datasets: [{
-        label: 'New Users',
-        data: [3, 5, 4, 6, 7, 9],
-        borderColor: '#4e73df',
-        backgroundColor: 'rgba(78, 115, 223, 0.1)',
-        tension: 0.3
-      }]
-    }
-  });
+    <!-- Page level plugins -->
+    <script src="/vendor/chart.js/Chart.min.js"></script>
 
-  const pieCtx = document.getElementById('skillPieChart').getContext('2d');
-  new Chart(pieCtx, {
-    type: 'doughnut',
-    data: {
-      labels: ['React', 'Node.js', 'MongoDB', 'Express', 'Other'],
-      datasets: [{
-        data: [25, 20, 15, 10, 30],
-        backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#858796']
-      }]
-    }
-  });
-</script>
+    <!-- Page level custom scripts -->
+    <script src="/js/demo/chart-area-demo.js"></script>
+    <script src="/js/demo/chart-pie-demo.js"></script>
+
 </body>
+
 </html>

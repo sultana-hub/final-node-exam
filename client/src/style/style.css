@@ -1,0 +1,51 @@
+ 
+ /* .sidebarContainer {
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: #663300;
+}
+
+.mainBlock {
+    width: calc(100vw - 200px);
+    left: 200px;
+    position: relative;
+}  */
+
+/* Sidebar Container */
+.sidebarContainer {
+    display: flex;
+    width: 100%;
+   
+}
+
+/* Sidebar */
+.sidebarContainer .sidebarContainer {
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    background: #663300;
+    z-index: 100; /* Ensure sidebar stays on top */
+    overflow-x: hidden; /* Prevents horizontal overflow from the sidebar */
+}
+
+/* Main Block */
+.mainBlock {
+    padding: 20px;
+    width: calc(100vw - 200px); /* Ensures the content fits next to the sidebar */
+    position: relative;
+    overflow-x: hidden; /* Prevents horizontal scrollbar */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}

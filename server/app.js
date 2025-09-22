@@ -1,91 +1,47 @@
 
-require('dotenv').config()
-const dbCon=require('./app/config/dbCon')
-const express=require('express')
-const cors=require('cors')
-const path=require('path')
-const ejs=require('ejs')
-const flash = require('connect-flash');
-const session = require('express-session');
+const express = require("express")
+const ejs = require("ejs")
+const dbCon = require('./app/config/dbCon')
+const cors = require("cors")
 const methodOverride = require('method-override');
-const cookieParser = require('cookie-parser');
-const rateLimitMiddleware = require('./app/helper/realLimit');
-const logger=require('./app/helper/logger')
-const app=express()
-dbCon()
+const path = require('path')
+const dotenv = require('dotenv').config()
+const bodyParser = require('body-parser')
 
-// app.use((req, res, next) => {
-//   res.setHeader(
-//     "Content-Security-Policy",
-//     "default-src 'self'; connect-src 'self' http://localhost:5000"
-//   );
-//   next();
-// });
 
+const app = express()
+// Fix CSP here
 app.use((req, res, next) => {
-  res.setHeader(
-    "Content-Security-Policy",
-    "default-src 'self'; " +
-    "connect-src 'self' http://localhost:4000; " +
-    "script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; " +
-    "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; " +
-    "font-src 'self' https://cdnjs.cloudflare.com; " +
-    "img-src 'self' data:;"
-  );
-  next();
+    res.setHeader("Content-Security-Policy", "default-src * 'self' data: blob:;");
+    next();
 });
 
+app.set("view engine", "ejs")
+app.set("views", "views")
+
+
+
+dbCon()
 app.use(cors())
+app.use(express.json())
+//middleware
+app.use(express.urlencoded({ extended: true }))
 
-app.use(cookieParser());
-
-app.get('/set-cookie', (req, res) => {
-  res.cookie('testcookie', 'hello-world', {
-    httpOnly: false,
-    sameSite: 'lax',
-    secure: false,
-    path: '/'
-  });
-  res.send('Test cookie set');
-});
-
-// app.use(rateLimitMiddleware);
-
- // Session & Flash
-app.use(session({
-  secret: process.env.SESSION_SECRET || 'helloworld',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { maxAge: 60 * 60 * 1000 }, // 1 hour
-}));
-app.use(flash());
-
-app.set('view engine','ejs');
-app.set('views','views')
-// Method override for PUT/DELETE
+//method override
 app.use(methodOverride('_method'));
 
-//setup json
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
-
 app.use(express.static(__dirname + '/public'));
-app.use(express.static('public')); 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
-//routes
-const adminRoute=require('./app/routes/adminAuthRoutes')
-app.use(adminRoute)
 
-//task routes
-const adminTaskRoutes=require('./app/routes/adminTaskRoutes')
-app.use(adminTaskRoutes)
-const PORT=process.env.PORT || 4000
+//routes front end
+const ProductApiRoute=require('./app/routes/productApiRoute')
+app.use('/api',ProductApiRoute)
 
-app.listen(PORT,()=>{
-    console.log(`🚀🚀🚀 server is running at : ${PORT}`)
-    //  logger.info(`Server listening on port ${PORT}`)
+//admin route
+const adminRoute = require('./app/routes/adminRoute')
+app.use( adminRoute)
+const port = 3000
+
+app.listen(port, () => {
+    console.log("server running at port :", port)
 })
-
-
-   
- 

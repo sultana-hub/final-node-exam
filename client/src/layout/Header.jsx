@@ -15,11 +15,11 @@ const Header = () => {
       <Toolbar sx={{ justifyContent: 'space-between' }}>
         {/* Left Section */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Typography variant="h6" component="div">
+          {/* <Typography variant="h6" component="div">
             <NavLink to="#!" className={({ isActive }) => `nav-link ${isActive ? 'active-link' : ''}`}>
               E-Kart
             </NavLink>
-          </Typography>
+          </Typography> */}
           <Button color="inherit">
             <NavLink to="/" className={({ isActive }) => `nav-link ${isActive ? 'active-link' : ''}`}>
               Home

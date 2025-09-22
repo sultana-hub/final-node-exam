@@ -7,13 +7,34 @@ const methodOverride = require('method-override');
 const path = require('path')
 const dotenv = require('dotenv').config()
 const bodyParser = require('body-parser')
-
+const session = require('express-session');
+const flash = require('connect-flash');
 
 const app = express()
 // Fix CSP here
 app.use((req, res, next) => {
     res.setHeader("Content-Security-Policy", "default-src * 'self' data: blob:;");
     next();
+});
+
+
+// Session middleware (required for flash)
+app.use(
+  session({
+    secret: 'mySecretKey', // change to a strong secret
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(flash());
+
+
+// Make flash messages available in all views (EJS)
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success');
+  res.locals.error_msg = req.flash('error');
+  next();
 });
 
 app.set("view engine", "ejs")

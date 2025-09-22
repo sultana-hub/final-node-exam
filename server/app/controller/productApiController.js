@@ -2,49 +2,50 @@
 const httpStatusCode = require("../helper/httpStatusCode")
 const { ProductModel, productValidation } = require("../model/productApiModel")
 const fs = require("fs")
-const slugify=require('slugify')
+const slugify = require('slugify')
 
 class ProducApiController {
 
 
 
-   async createProduct(req, res) {
-    try {
-        const prodData = {
-            name: req.body.name,
-            description: req.body.description,
-            category: req.body.category  
-        };
+    async createProduct(req, res) {
+        try {
+            const prodData = {
+                name: req.body.name,
+                description: req.body.description,
+                category: req.body.category
+            };
 
-        // Main image
-        if (req.file) {
-            prodData.image = req.file.path;
+            // Main image
+            if (req.file) {
+                prodData.image = req.file.path;
+            }
+
+            // Validate with Joi
+            const validatedData = await productValidation.validateAsync(prodData);
+
+            // Save product
+            const createdProduct = await ProductModel.create(validatedData);
+
+            // return res.status(httpStatusCode.Ok).json({
+            //     status: true,
+            //     data: createdProduct
+            // });
+            return res.redirect('/product/list');
+
+        } catch (error) {
+            console.error(error);
+            return res.status(httpStatusCode.InternalServerError).json({
+                status: false,
+                message: error.details?.[0]?.message || error.message || 'Server error'
+            });
         }
-
-        // Validate with Joi
-        const validatedData = await productValidation.validateAsync(prodData);
-
-        // Save product
-        const createdProduct = await ProductModel.create(validatedData);
-
-        return res.status(httpStatusCode.Ok).json({
-            status: true,
-            data: createdProduct
-        });
-
-    } catch (error) {
-        console.error(error);
-        return res.status(httpStatusCode.InternalServerError).json({
-            status: false,
-            message: error.details?.[0]?.message || error.message || 'Server error'
-        });
     }
-}
 
 
 
     //get all products
-    
+
     async Productlist(req, res) {
         try {
 
@@ -108,13 +109,13 @@ class ProducApiController {
                 image: req?.file.path?.replace(/\\/g, '/') || existingProduct.image
             };
 
-           
+
             const { error } = productValidation.validate({
                 name: updatedData.name,
-                category:updatedData.category,
+                category: updatedData.category,
                 description: updatedData.description,
                 image: updatedData.image,
-        
+
             });
 
             if (error) {
@@ -136,11 +137,12 @@ class ProducApiController {
                 { new: true }
             );
 
-            return res.status(httpStatusCode.Ok).json({
-                status: true,
-                message: 'Product updated successfully',
-                data: updatedProduct,
-            });
+            // return res.status(httpStatusCode.Ok).json({
+            //     status: true,
+            //     message: 'Product updated successfully',
+            //     data: updatedProduct,
+            // });
+            return res.redirect('/product/list');
 
         } catch (error) {
             console.error(error);
@@ -167,10 +169,12 @@ class ProducApiController {
                 })
 
             }
-            return res.status(errorCode.Success).json({
-                status: true,
-                message: "Data deleted successfully"
-            })
+            // return res.status(errorCode.Success).json({
+            //     status: true,
+            //     message: "Data deleted successfully"
+            // })
+
+            return res.redirect('/product/list');
         } catch (error) {
             return res.status(httpStatusCode.InternalServerError).json({
                 status: false,
@@ -192,11 +196,12 @@ class ProducApiController {
             })
 
             // res.redirect('/api/dashboard')
-            return res.status(httpStatusCode.Ok).json({
-                status: true,
-                message: "Deleted successfully",
-                data: softDel
-            })
+            // return res.status(httpStatusCode.Ok).json({
+            //     status: true,
+            //     message: "Deleted successfully",
+            //     data: softDel
+            // })
+             return res.redirect('/product/list');
         } catch (error) {
             return res.status(httpStatusCode.InternalServerError).json({
                 status: false,

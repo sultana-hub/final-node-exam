@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
 
+const Joi = require('joi');
+
+const categoryValidation = Joi.object({
+    name: Joi.string().required().min(3).trim(),
+})
+
 const CategorySchema = new mongoose.Schema({
     name: {
         type: String,
@@ -29,4 +35,4 @@ CategorySchema.pre('save', function (next) {
 });
 
 const CategoryModel = mongoose.model('Category', CategorySchema);
-module.exports = CategoryModel
+module.exports = {CategoryModel,categoryValidation}

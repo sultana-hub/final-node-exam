@@ -16,6 +16,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
@@ -45,11 +46,20 @@
                         <!-- Begin Page Content -->
                         <div class="container-fluid">
 
-                            <!-- Page Heading -->
-                            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                <h1 class="h3 mb-0 text-gray-800">Admin Dashboard</h1>
-                            </div>
-                          
+                            <% if (success_msg) { %>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <%= success_msg %>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close">x</button>
+                                </div>
+                                <% } %>
+
+
+                                    <!-- Page Heading -->
+                                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                                        <h1 class="h3 mb-0 text-gray-800">Admin Dashboard</h1>
+                                    </div>
+
                                     <!-- Content Row -->
                                     <div class="row">
 
@@ -62,11 +72,12 @@
                                                             <div
                                                                 class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                                 No Of Products</div>
-                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">20
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                                <%= product ? product.length : 0 %>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                                            <i class="fas fa-shopping-bag fa-2x text-gray-300"></i>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -82,11 +93,12 @@
                                                             <div
                                                                 class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                                 Category</div>
-                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">10
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                                <%=category?category.length:0%>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                            <i class="fas fa-tags fa-2x text-gray-300"></i>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -101,13 +113,13 @@
                                                         <div class="col mr-2">
                                                             <div
                                                                 class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                                Sales
+
                                                             </div>
                                                             <div class="row no-gutters align-items-center">
                                                                 <div class="col-auto">
                                                                     <div
                                                                         class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                                        90%
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="col">
@@ -121,7 +133,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                                            <i class="fas  fa-2x text-gray-300"></i>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -136,11 +148,11 @@
                                                         <div class="col mr-2">
                                                             <div
                                                                 class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                                Customer</div>
-                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                                            </div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                                            <i class="fas  fa-2x text-gray-300"></i>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -158,7 +170,7 @@
                                                 <!-- Card Header - Dropdown -->
                                                 <div
                                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                    <h6 class="m-0 font-weight-bold text-primary">Earnings</h6>
+                                                    <h6 class="m-0 font-weight-bold text-primary">Products</h6>
                                                     <div class="dropdown no-arrow">
                                                         <a class="dropdown-toggle" href="#" role="button"
                                                             id="dropdownMenuLink" data-toggle="dropdown"
@@ -190,7 +202,7 @@
                                                 <!-- Card Header - Dropdown -->
                                                 <div
                                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                                    <h6 class="m-0 font-weight-bold text-primary">Category</h6>
                                                     <div class="dropdown no-arrow">
                                                         <a class="dropdown-toggle" href="#" role="button"
                                                             id="dropdownMenuLink" data-toggle="dropdown"
@@ -282,6 +294,8 @@
     <!-- Page level custom scripts -->
     <script src="/js/demo/chart-area-demo.js"></script>
     <script src="/js/demo/chart-pie-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 
 </body>
 

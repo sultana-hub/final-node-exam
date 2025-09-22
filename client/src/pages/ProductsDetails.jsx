@@ -77,16 +77,19 @@ const ProductsDetails = () => {
         {/* Right: Product Info */}
         <Box sx={{ flex: 1 }}>
           <CardContent>
-            <Typography variant="h5" gutterBottom>
-              {product.name}
+             <Typography variant="h5" gutterBottom>
+             Details Of The Product
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+             Name: {product.name}
             </Typography>
             <Typography variant="subtitle1" color="text.secondary" gutterBottom>
               Category: {product.category?.name}
             </Typography>
             <Typography variant="body1" gutterBottom>
-              {product.description}
+             Description: {product.description}
             </Typography>
-            <Box sx={{ mt: 3, display: 'flex', gap: 2 }}>
+            {/* <Box sx={{ mt: 3, display: 'flex', gap: 2 }}>
               <Button variant="contained"
                 sx={{
                   backgroundColor: "#1d0944ff", // your custom color
@@ -97,7 +100,7 @@ const ProductsDetails = () => {
               <Button variant="outlined" color="secondary">
                 Buy Now
               </Button>
-            </Box>
+            </Box> */}
           </CardContent>
         </Box>
       </Box>

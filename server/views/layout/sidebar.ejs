@@ -1,0 +1,23 @@
+
+
+<!-- sidebar.ejs -->
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark h-100">
+    <a href="#" class="d-flex align-items-center mb-3 text-white text-decoration-none">
+        <i class="fas fa-user-cog me-2"></i>
+        <span class="fs-5"><%=user.role%></span>
+    </a>
+    <hr class="text-white">
+    <ul class="nav nav-pills flex-column mb-auto">
+            <% if(user.role === 'SuperAdmin') { %>
+            <li><a href="/user-list" class="nav-link text-white">Manage Users</a></li>
+        <% } %>
+
+        <% if(user.role === 'SuperAdmin' || user.role==='Manager' || user.role==='Admin'|| user.role==='Employee') { %>
+            <li><a href="/task-list" class="nav-link text-white">Manage Task</a></li>
+        <% } %>
+
+        <!-- <% if(user.role === 'Employee' ) { %>
+            <li><a href="/emp-dashboard" class="nav-link text-white">View Assigned Task</a></li>
+        <% } %> -->
+    </ul>
+</div>

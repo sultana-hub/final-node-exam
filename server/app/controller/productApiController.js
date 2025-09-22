@@ -31,6 +31,7 @@ class ProducApiController {
             //     status: true,
             //     data: createdProduct
             // });
+             req.flash('message', 'Product created successfully!');
             return res.redirect('/product/list');
 
         } catch (error) {

@@ -78,6 +78,9 @@ const MainPage = () => {
 
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
+         <Typography variant="h4" component="h1" align="center">
+        Welcome To Customer Portal
+      </Typography>
       {/* Search Bar */}
       <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
         <SearchForm onSearch={handleSearch} />

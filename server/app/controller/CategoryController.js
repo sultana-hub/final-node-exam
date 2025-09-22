@@ -92,10 +92,11 @@ class CategoryController {
                 })
 
             }
-            return res.status(httpStatusCode.Ok).json({
-                status: true,
-                message: "Data deleted successfully"
-            })
+            // return res.status(httpStatusCode.Ok).json({
+            //     status: true,
+            //     message: "Data deleted successfully"
+            // })
+            return res.redirect('/category/list');
         } catch (error) {
             return res.status(httpStatusCode.InternalServerError).json({
                 status: false,

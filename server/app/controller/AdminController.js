@@ -1,6 +1,6 @@
 const httpStatusCode = require('../helper/httpStatusCode')
 const { ProductModel } = require('../model/productApiModel')
-const {CategoryModel} = require('../model/category')
+const { CategoryModel } = require('../model/category')
 
 
 class AdminController {
@@ -48,10 +48,12 @@ class AdminController {
     }
     async addProductPage(req, res) {
         try {
+            const message = req.flash('message');
             const category = await CategoryModel.find()
-            res.render('product/add', { title: "Add product", category })
-        } catch (errorr) {
-            res.status(httpStatusCode.InternalServerError).send(errorr)
+            res.render('product/add', { title: "Add product", category, message })
+        } catch (error) {
+            console.log("errorr in creating product list", error)
+            req.flash('message', "Error in creating product");
         }
     }
 
@@ -86,7 +88,7 @@ class AdminController {
     async addCategoryPage(req, res) {
         try {
             const message = req.flash('message');
-            res.render('category/add', { title: "Add category" ,message})
+            res.render('category/add', { title: "Add category", message })
         } catch (errorr) {
             res.status(httpStatusCode.InternalServerError).send(errorr)
             req.flash('message', "Error in creating category");
